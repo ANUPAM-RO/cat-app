@@ -7,7 +7,7 @@ const Box = ({imageUrl,  breedsData  }) => {
   return (
     <div className="flex justify-center">
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-        <img className="rounded-t-lg h-40 w-full" src={imageUrl} alt="" />
+        <img className="rounded-t-lg h-48 w-full object-cover" src={imageUrl} alt="" />
         <div className="p-5">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {breedsData?.name} {breedsData?.alt_names ? "or" : ""} {breedsData?.alt_names}
