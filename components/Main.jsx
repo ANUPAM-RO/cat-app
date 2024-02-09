@@ -1,38 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
+import useData from "@/Hooks/useData";
 
 export default function Main() {
- const [catData , setCatData] = useState([])
-
-  const fetchCatData = async () => {
-    const headers = new Headers({
-      "Content-Type": "application/json",
-      "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
-    });
-
-    var requestOptions = {
-      method: "GET",
-      headers: headers,
-      redirect: "follow",
-    };
-    try {
-      const response = await fetch(
-        "https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=10",
-        requestOptions
-      );
-        const data = await response.json();
-        setCatData(data)
-    } catch (error) {
-      console.log(error);
-    }
-  };
-    useEffect(() => {
-     fetchCatData()
-    }, [])
-    
+ const { catData } = useData()
   return (
-    <main className="min-h-screen p-4">
+      <main className="min-h-screen p-4">
+          <p className="text-3xl text-center font-semibold text-teal-700 py-6 uppercase">Welcome to Show your Cat breeds</p>
           <SearchBar data={catData} />   
     </main>
   );
